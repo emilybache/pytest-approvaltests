@@ -65,8 +65,7 @@ To define your own diff reporter, perhaps a program with a rich GUI installed on
 
     pytest --approvaltests-add-reporter="diff_program"
 
-The value for 'approvaltests-add-reporter' should be an executable program that can diff two files received
- as arguments on the command line like this:
+The value for 'approvaltests-add-reporter' should be an executable program that can diff two files received as arguments on the command line like this:
 
     diff_program filepath1 filepath2
 
