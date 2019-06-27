@@ -50,7 +50,7 @@ You can install "pytest-approvaltests" via `pip`_ from `PyPI`_::
 Usage
 -----
 
-See also the documentation for (approval tests)[https://github.com/approvals/ApprovalTests.Python]
+See also the documentation for `approval tests <https://github.com/approvals/ApprovalTests.Python>`_
 
 When your approval tests fail and you are working interactively, you might like
 it to open another diff tool than when you are on a CI server for example.
