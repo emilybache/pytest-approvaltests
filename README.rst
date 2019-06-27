@@ -50,7 +50,7 @@ You can install "pytest-approvaltests" via `pip`_ from `PyPI`_::
 Usage
 -----
 
-See also the documentation for [approval tests](https://github.com/approvals/ApprovalTests.Python)
+See also the documentation for (approval tests)[https://github.com/approvals/ApprovalTests.Python]
 
 When your approval tests fail and you are working interactively, you might like
 it to open another diff tool than when you are on a CI server for example.
@@ -76,11 +76,6 @@ if it takes additional arguments, add them with 'approvaltests-add-reporter-args
 They will be inserted like this:
 
     diff_program arg1 arg2 filepath1 filepath2
-
-Alternatively you can add these arguments in your pytest.ini file:
-
-[pytest]
-addopts = --approvaltests-add-reporter="diff_program"
 
 
 
