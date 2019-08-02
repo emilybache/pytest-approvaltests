@@ -71,5 +71,6 @@ target/
 
 # pyenv
 .python-version
+venv
 
 .idea

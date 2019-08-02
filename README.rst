@@ -20,17 +20,12 @@ pytest-approvaltests
 
 A plugin to use approvaltests with pytest
 
-----
-
-This `pytest`_ plugin was generated with `Cookiecutter`_ along with `@hackebrot`_'s `cookiecutter-pytest-plugin`_ template.
-
 
 Features
 --------
 
-Configure approvaltests for use with pytest.
-   - indicate which of the reporters to use on test failure
-   - define your own diff reporter to use on test failure
+   - command line options to choose which reporter to use on approval test failure
+   - define your own diff reporter to use on approval test failure
 
 
 Requirements

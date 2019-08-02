@@ -25,19 +25,32 @@ def pytest_addoption(parser):
 def pytest_configure(config):
     factory = GenericDiffReporterFactory()
 
-    if config.option.approvaltests_custom_reporter:
-        args_str = config.option.approvaltests_custom_reporter_args
-        if args_str:
-            args = args_str.split(',')
-        else:
-            args = []
-        custom_reporter_name = "Custom"
-        reporter_config = [custom_reporter_name,
-                           config.option.approvaltests_custom_reporter,
-                           args]
-        factory.add_default_reporter_config(reporter_config)
-        reporter = factory.get(custom_reporter_name)
+    custom_reporter = config.option.approvaltests_custom_reporter
+    if custom_reporter:
+        args = get_reporter_args(config.option.approvaltests_custom_reporter_args)
+        reporter = create_reporter(factory, custom_reporter, args)
     else:
         reporter = factory.get(config.option.approvaltests_reporter)
 
     approvaltests.set_default_reporter(reporter)
+
+
+def get_reporter_args(args_str):
+    if args_str:
+        args = args_str.split(',')
+    else:
+        args = []
+    return args
+
+
+def create_reporter(factory, custom_reporter, args):
+    reporter_name = "Custom"
+    reporter_config = [reporter_name,
+                       custom_reporter,
+                       args]
+    factory.add_default_reporter_config(reporter_config)
+    reporter = factory.get(reporter_name)
+    return reporter
+
+
+

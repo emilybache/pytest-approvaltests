@@ -3,7 +3,6 @@ import os
 
 
 def test_approvaltests_use_reporter(testdir):
-    """Make sure that pytest accepts our fixture."""
 
     # create a temporary pytest test module with a failing approval test
     testdir.makepyfile("""
@@ -27,7 +26,6 @@ def test_approvaltests_use_reporter(testdir):
 
 
 def test_approvaltests_add_reporter(testdir, tmpdir):
-    """Make sure that pytest accepts our fixture."""
 
     # create a temporary pytest test module with a failing approval test
     testdir.makepyfile("""
@@ -36,8 +34,10 @@ def test_approvaltests_add_reporter(testdir, tmpdir):
             verify("foo")
     """)
     # create a diff tool that just prints 'diff program is executing'
+    tmpdir = os.path.join(str(tmpdir), "path with spaces")
     diff_program_contents = "print('diff program is executing')"
-    diff_tool = os.path.join(tmpdir, "diff.py")
+    diff_tool = os.path.join(str(tmpdir), "diff.py")
+    os.makedirs(tmpdir)
     with open(diff_tool, "w") as f:
         f.write(diff_program_contents)
 
@@ -67,3 +67,11 @@ def test_help_message(testdir):
         '*--approvaltests-add-reporter=*',
         '*--approvaltests-add-reporter-args=*',
     ])
+
+
+def test_difftool_path_with_spaces(testdir):
+    from pytest_approvaltests import create_reporter
+    from approvaltests.reporters import GenericDiffReporterFactory
+    factory = GenericDiffReporterFactory()
+    reporter = create_reporter(factory, "/path with spaces/to/difftool", [])
+    assert reporter.path == "/path with spaces/to/difftool"
