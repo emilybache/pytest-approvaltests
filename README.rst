@@ -90,6 +90,19 @@ Issues
 
 If you encounter any problems, please `file an issue`_ along with a detailed description.
 
+Developer Notes
+----------------
+
+To release a new version on pypi:
+
+    python setup.py install
+
+check it created an egg file under dist
+
+    python -m twine upload dist/pytest_approvaltests-<version>-py3.7.egg
+
+You will need to enter a valid username and password for pypi
+
 .. _`Cookiecutter`: https://github.com/audreyr/cookiecutter
 .. _`@hackebrot`: https://github.com/hackebrot
 .. _`MIT`: http://opensource.org/licenses/MIT
